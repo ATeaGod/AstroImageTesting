@@ -12,10 +12,24 @@ hdu = fits.open(filepath)
 data = hdu[0].data
 hdu.close()
 
-# Model Generation #
+# Elipse Creation #
 
 ellipse = Ellipse(data)
 isolist = ellipse.fit_image(sma0=20.)
+print(isolist.to_table())
+
+# Brightness Graph #
+
+plt.figure(figsize=(8, 4))
+plt.scatter(isolist.sma**0.25, -2.5*np.log10(isolist.intens))
+plt.title("brightness profile")
+plt.xlabel('sma**1/4')
+plt.ylabel('Magnitude')
+plt.gca().invert_yaxis()
+plt.show()
+
+# Model Generation #
+
 model_image = build_ellipse_model(data.shape, isolist)
 
 residual = data - model_image
