@@ -24,7 +24,7 @@ plt.figure(figsize=(8, 4))
 plt.scatter(isolist.sma**0.25, -2.5*np.log10(isolist.intens))
 plt.title("brightness profile")
 plt.xlabel('sma**1/4')
-plt.ylabel('Magnitude')
+plt.ylabel('Brightness')
 plt.gca().invert_yaxis()
 plt.show()
 
