@@ -6,6 +6,7 @@ from astropy.utils.data import download_file
 from photutils.isophote import Ellipse, build_ellipse_model
 
 # file stuffs #
+
 filepath = input("FilePath >>> ")
 hdu = fits.open(filepath)
 data = hdu[0].data
@@ -36,5 +37,3 @@ hdu_residual = fits.PrimaryHDU(residual)
 hdu_residual.writeto('residual.fits', overwrite=True)
 hdu_model = fits.PrimaryHDU(model_image)
 hdu_model.writeto('model_image.fits', overwrite=True)
-hdu_residual.close()
-hdu_model.close()
